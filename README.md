@@ -147,7 +147,7 @@ top10_profit = (
 
 ## 3. The Viz
 ### 3.1 Profit vs Popularity (scatter plot): 
-  - <img width="1000" height="600" alt="Figure_1" src="https://github.com/user-attachments/assets/3db20e3e-1044-4e91-bdc6-8eae3c8ee022" />
+   <img width="1000" height="600" alt="Figure_1" src="https://github.com/user-attachments/assets/3db20e3e-1044-4e91-bdc6-8eae3c8ee022" />
   
   - Top 100 most popular movies.
     
@@ -156,7 +156,7 @@ top10_profit = (
   - Insight: Popularity ≠ Profitability.
 
 ### 3.2 Budget vs Profit (scatter plot): 
-  - <img width="1200" height="700" alt="Figure_2" src="https://github.com/user-attachments/assets/fedd225d-b4a8-4ce1-b4b5-51baffcbe2a2" />
+   <img width="1200" height="700" alt="Figure_2" src="https://github.com/user-attachments/assets/fedd225d-b4a8-4ce1-b4b5-51baffcbe2a2" />
 
   - Scatter plot across dataset.
 
