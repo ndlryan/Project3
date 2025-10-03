@@ -27,5 +27,15 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 ### 1.1 Index & Character Check
   - Performed index-checking on the raw CSV.
   - Generated unusual_characters_report.tsv to log unexpected characters.
-  - Defined whitelists for specific columns (e.g., URL fields follow standard RFC patterns).
+  - Defined whitelists for specific columns (e.g., URL fields follow standard RFC 3986 patterns).
   - Assigned proper data types for each column.
+
+### 1.2 Handling Dates (release_date)
+  - Release_date field contained ambiguous 2-digit years (e.g., 11/68/31, 01/05/99).
+  - Applied logic with bounds [1900, 2015]:
+    * "68" → 1968
+    * "99" → 1999
+    * "15" → 2015
+    * "00–15" interpreted as 2000–2015, not 1900–1915.
+  - Rule: Closer to the present takes priority.
+  - Any unresolvable dates were preserved but marked as missing (NaT).
