@@ -21,5 +21,7 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 # 🛠️ Workflow
 
 ## 0. Collect
- - Dataset downloaded from:
-https://raw.githubusercontent.com/yinghaoz1/tmdb-movie-dataset-analysis/master/tmdb-movies.csv
+ - Dataset downloaded from: https://raw.githubusercontent.com/yinghaoz1/tmdb-movie-dataset-analysis/master/tmdb-movies.csv
+
+## 1. Prepare & Clean
+### 1.1 Index & Character Check
