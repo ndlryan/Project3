@@ -19,7 +19,7 @@ High-Rated Films (≥7.5) span both small and large budgets → quality does not
 Profitability in movies is not guaranteed by budget, fame, or popularity. Success requires strategic execution, distribution, and cultural resonance — not just spending power.
 
 ##
------
+
 🛠️ Workflow
 
 0. Collect
