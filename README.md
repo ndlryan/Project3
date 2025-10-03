@@ -59,4 +59,5 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
     df_sorted = df.sort_values(by = ["release_date"], ascending = False)
 
 ### 2.2 Movies with rating ≥ 7.5 : 
-    Saved as " avg_rate.csv "
+    filtered = df[df['vote_average'] >= 7.5]
+    df_sorted = filtered.sort_values(by = "vote_average", ascending = False)
