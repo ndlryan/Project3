@@ -65,7 +65,16 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 ### 2.3 Revenue Extremes : 
     min_rev = df["revenue_adj"].min()
     max_rev = df["revenue_adj"].max()
-
+    
     min_rev_row = df[df["revenue_adj"] == min_rev] [["original_title", "revenue_adj"]]
     max_rev_row = df[df["revenue_adj"] == max_rev] [["original_title", "revenue_adj"]]  
-    #pandas automatically ignores NaN for min()/max()
+
+### 2.4 Total Revenue (raw/absolute revenue):
+    total_revenue = df["revenue"].sum()
+
+### 2.5 Top 10 Profit Movies:
+    df["profit"] = df["revenue_adj"] - df["budget_adj"]
+    df_clean = df.dropna(subset=["profit"]) #remove Null records
+    df_sorted = df_clean.sort_values(by=["profit"], ascending=False)
+
+    print(df_sorted[["original_title", "profit"]].head(10))
