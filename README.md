@@ -26,7 +26,7 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 ## 1. Prepare & Clean
 ### 1.1 Index & Character Check
   - Performed index-checking on the raw CSV.
-  - Generated unusual_characters_report.tsv to log unexpected characters.
+  - Generated "unusual_characters_report.tsv" to log unexpected characters.
   - Defined whitelists for specific columns (e.g., URL fields follow standard RFC 3986 patterns).
   - Assigned proper data types for each column.
 
@@ -39,3 +39,15 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
     * "00–15" interpreted as 2000–2015, not 1900–1915.
   - Rule: Closer to the present takes priority.
   - Any unresolvable dates were preserved but marked as missing (NaT).
+
+### 1.3 Suspicious Records
+  - Titles with very short original_title were extracted into "suspicious_records.csv"
+  - These records were not removed #  from the main dataset, ensuring no analysis bias.
+
+### 1.4 Deduplication
+  - Checked primary key: id.
+  - Found and removed 1 duplicate, saving as "clean-data.csv"
+  - This file is the base dataset for all analyses.
+
+### 1.5 Headers
+  - Extracted and stored column headers for later reference.
