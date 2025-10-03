@@ -53,5 +53,7 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
   - Extracted and stored column headers for later reference.
 
 
-# Analysis 
+## 2. Analysis 
 ##### We used the _adj (inflation-adjusted) columns (budget_adj, revenue_adj) to ensure fair comparisons across decades. This ensures we’re comparing apples to apples
+### 2.1 Release Date DESC : 
+Sorted all movies by most recent release date.
