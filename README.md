@@ -61,3 +61,11 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 ### 2.2 Movies with rating ≥ 7.5 : 
     filtered = df[df['vote_average'] >= 7.5]
     df_sorted = filtered.sort_values(by = "vote_average", ascending = False)
+
+### 2.3 Revenue Extremes : 
+    min_rev = df["revenue_adj"].min()
+    max_rev = df["revenue_adj"].max()
+
+    min_rev_row = df[df["revenue_adj"] == min_rev] [["original_title", "revenue_adj"]]
+    max_rev_row = df[df["revenue_adj"] == max_rev] [["original_title", "revenue_adj"]]  
+    #pandas automatically ignores NaN for min()/max()
