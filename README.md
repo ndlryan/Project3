@@ -25,3 +25,7 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 
 ## 1. Prepare & Clean
     1.1 Index & Character Check
+    - Performed index-checking on the raw CSV.
+    - Generated unusual_characters_report.tsv to log unexpected characters.
+    - Defined whitelists for specific columns (e.g., URL fields follow standard RFC patterns).
+    - Assigned proper data types for each column.
