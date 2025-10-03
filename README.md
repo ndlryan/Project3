@@ -79,7 +79,7 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
 
     print(df_sorted[["original_title", "profit"]].head(10))
 
-### 2.6 Director / Actor:
+### 2.6. Director / Actor:
 #### 2.6.1 Director:
     #Split
     directors_exploded = df['director'].str.split('|').explode().str.strip()
@@ -100,3 +100,19 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
     #Sort
     print("Top Actor:")
     print(cast_count.head(1))
+
+### 2.7. Genres:
+    #Split
+    genres_exploded = df['genres'].str.split('|').explode().str.strip()
+
+    #Count
+    genres_count = genres_exploded.value_counts()
+
+### 2.8. [Extra] Top P&L:  
+    df["profit"] = df["revenue_adj"] - df["budget_adj"]
+
+    df_clean = df.dropna(subset = ["budget_adj", "profit"]) #remove N/A
+    df_clean = df_clean[(df_clean["budget_adj"] > 0) & (df_clean["revenue_adj"] > 0)] #ensure no data bias
+
+    top_winners = df_clean.nlargest(10, "profit") [["original_title", "profit", "budget_adj", "revenue_adj"]]
+    top_losers = df_clean.nsmallest(10, "profit") [["original_title", "profit", "budget_adj", "revenue_adj"]]
