@@ -24,13 +24,13 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
  - Dataset downloaded from: https://raw.githubusercontent.com/yinghaoz1/tmdb-movie-dataset-analysis/master/tmdb-movies.csv
 
 ## 1. Prepare & Clean
-### 1.1 Index & Character Check
+### 1.1. Index & Character Check
   - Performed index-checking on the raw CSV.
   - Generated "unusual_characters_report.tsv" to log unexpected characters.
   - Defined whitelists for specific columns (e.g., URL fields follow standard RFC 3986 patterns).
   - Assigned proper data types for each column.
 
-### 1.2 Handling Dates (release_date)
+### 1.2. Handling Dates (release_date)
   - Release_date field contained ambiguous 2-digit years (e.g., 11/68/31, 01/05/99).
   - Applied logic with bounds [1900, 2015]:
     * "68" → 1968
@@ -40,41 +40,63 @@ Profitability in movies is not guaranteed by budget, fame, or popularity. Succes
   - Rule: Closer to the present takes priority.
   - Any unresolvable dates were preserved but marked as missing (NaT).
 
-### 1.3 Suspicious Records
+### 1.3. Suspicious Records
   - Titles with very short original_title were extracted into "suspicious_records.csv"
   - These records were not removed #  from the main dataset, ensuring no analysis bias.
 
-### 1.4 Deduplication
+### 1.4. Deduplication
   - Checked primary key: id.
   - Found and removed 1 duplicate, saving as "clean-data.csv"
   - This file is the base dataset for all analyses.
 
-### 1.5 Headers
+### 1.5. Headers
   - Extracted and stored column headers for later reference.
 
 
 ## 2. Analysis 
 ##### We used the _adj (inflation-adjusted) columns (budget_adj, revenue_adj) to ensure fair comparisons across decades. This ensures we’re comparing apples to apples
-### 2.1 Release Date DESC : 
+### 2.1. Release Date DESC : 
     df_sorted = df.sort_values(by = ["release_date"], ascending = False)
 
-### 2.2 Movies with rating ≥ 7.5 : 
+### 2.2. Movies with rating ≥ 7.5 : 
     filtered = df[df['vote_average'] >= 7.5]
     df_sorted = filtered.sort_values(by = "vote_average", ascending = False)
 
-### 2.3 Revenue Extremes : 
+### 2.3. Revenue Extremes : 
     min_rev = df["revenue_adj"].min()
     max_rev = df["revenue_adj"].max()
     
     min_rev_row = df[df["revenue_adj"] == min_rev] [["original_title", "revenue_adj"]]
     max_rev_row = df[df["revenue_adj"] == max_rev] [["original_title", "revenue_adj"]]  
 
-### 2.4 Total Revenue (raw/absolute revenue):
+### 2.4. Total Revenue (raw/absolute revenue):
     total_revenue = df["revenue"].sum()
 
-### 2.5 Top 10 Profit Movies:
+### 2.5. Top 10 Profit Movies:
     df["profit"] = df["revenue_adj"] - df["budget_adj"]
     df_clean = df.dropna(subset=["profit"]) #remove Null records
     df_sorted = df_clean.sort_values(by=["profit"], ascending=False)
 
     print(df_sorted[["original_title", "profit"]].head(10))
+
+### 2.6 Director / Actor:
+#### 2.6.1 Director:
+    #Split
+    directors_exploded = df['director'].str.split('|').explode().str.strip()
+
+    #Count
+    director_count = directors_exploded.value_counts()
+
+    #Sort
+    print("Top Director:")
+    print(director_count.head(1))
+#### 2.6.1 Actor:
+    #Split
+    cast_exploded = df['cast'].str.split('|').explode().str.strip()
+
+    #Count
+    cast_count = cast_exploded.value_counts()
+
+    #Sort
+    print("Top Actor:")
+    print(cast_count.head(1))
