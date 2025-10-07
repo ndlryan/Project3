@@ -99,13 +99,13 @@ All output files will be saved in the project folder.
 ## Visualizations Insisghts
 
 ### 1. Popularity vs Profit (Top 100)
-![Popularity vs Profit](images/popularity_vs_profit.png)
+![Popularity vs Profit](popularity_vs_profit.png)
 
 - Audience attention doesn’t always translate into box office success.
 - 💡 Observation: High popularity does not guarantee high profit — audience attention is not the same as box office success.
 
 ### 2. Budget vs Profit (All movies)
-![Budget vs Profit](images/budget_vs_profit.png)
+![Budget vs Profit](budget_vs_profit.png)
 
 - Big investments don’t guarantee big returns — even high-budget films can lose money.
 
